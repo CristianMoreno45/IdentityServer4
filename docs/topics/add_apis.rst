@@ -7,12 +7,18 @@ For simple scenarios, we give you some helpers. See the advanced section to unde
 
 .. note:: You could achieve the same by using either our ``IdentityServerAuthentication`` handler or Microsoft's ``JwtBearer`` handler. But this is not recommended since it requires more configuration and creates dependencies on external libraries that might lead to conflicts in future updates.
 
-Start by registering your API as an ``ApiResource``, e.g.::
+Start by registering your API as an ``ApiResource`` and ``ApiScope`` , e.g.::
 
     public static IEnumerable<ApiResource> Apis = new List<ApiResource>
     {
         // local API
         new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
+    };
+    
+    public static IEnumerable<ApiScope> Scopes = new List<ApiScope>
+    {
+        // local API
+        new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
     };
 
 ..and give your clients access to this API, e.g.::
